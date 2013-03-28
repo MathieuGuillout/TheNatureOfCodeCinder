@@ -15,3 +15,4 @@ Example List
 ------------
 - Traditional random walk
 - Random number distribution
+- Non uniform distribution
