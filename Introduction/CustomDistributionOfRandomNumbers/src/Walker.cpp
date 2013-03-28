@@ -16,7 +16,8 @@ Walker::Walker()
 
 void Walker::display() 
 {
-  gl::drawSolidCircle( Vec2f(x, y), 1.0f );
+  gl::color(1, 1, 1, 0.05);
+  gl::drawSolidCircle( Vec2f(x, y), 10.0f );
 }
 
 float Walker::montecarlo() {

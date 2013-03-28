@@ -24,6 +24,7 @@ void Demo::prepareSettings(Settings *settings) {
 
 void Demo::setup()
 {
+  gl::enableAlphaBlending();
   gl::clear( Color(0.1f, 0.1f, 0.1f) );
   walker = new Walker();
 }
