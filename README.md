@@ -19,3 +19,4 @@ Example List
   - Random number distribution
   - Non uniform distribution
   - Normal distribution random numbers
+  - Custom Distribution of random numbers
