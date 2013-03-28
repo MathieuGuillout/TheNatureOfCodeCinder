@@ -12,9 +12,9 @@ private:
 public:
   void setup();
   void prepareSettings( Settings *settings );
-	void mouseDown( MouseEvent event );	
-	void update();
-	void draw();
+  void mouseDown( MouseEvent event ); 
+  void update();
+  void draw();
 };
 
 void Demo::prepareSettings(Settings *settings) {
