@@ -7,10 +7,10 @@ using namespace ci::app;
 using namespace std;
 
 class Demo : public AppBasic {
-
+private:
   Walker * walker;
-  public:
-	void setup();
+public:
+  void setup();
   void prepareSettings( Settings *settings );
 	void mouseDown( MouseEvent event );	
 	void update();
