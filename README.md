@@ -14,3 +14,4 @@ It should build and run the example
 Example List
 ------------
 - Traditional random walk
+- Random number distribution
