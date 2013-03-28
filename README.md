@@ -1,13 +1,13 @@
 The nature of code examples (w/ cinder)
 =======================================
 
-To build examples
------------------
+To build an example
+-------------------
 You should have CINDER_PATH defined as a environment variable
 
-Go to the example folder
+cd into the example folder
 
-Type make
+make
 
 It should build and run the example
 
