@@ -1,6 +1,6 @@
 CC=g++
 
-OPTIONS=-m32 -arch i386 
+OPTIONS=-m32 -arch i386 -W
 FRAMEWORKS=-framework Cocoa -framework IOKit -framework Accelerate -framework AudioToolbox -framework AudioUnit -framework CoreAudio -framework CoreVideo -framework CoreServices -framework QTKit -framework OpenGL -framework QuickTime -framework AppKit -framework Cocoa -framework CoreData -framework Foundation
 LIBRARIES=-L ${CINDER_PATH}/lib -L ${CINDER_PATH}/lib/macosx
 XLINKERS=-XLinker ${CINDER_PATH}/lib/libcinder_d.a
