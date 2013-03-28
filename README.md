@@ -1,4 +1,4 @@
-TheNatureOfCodeCinder
-=====================
+The nature of code examples (w/ cinder)
+==================
 
-Examples of the book "The nature of code" coded on the cinder framework
+
