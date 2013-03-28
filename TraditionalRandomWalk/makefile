@@ -9,16 +9,21 @@ INCLUDES=-l cinder -l cinder_d -l z -l png14 -l pixman-1 -l cairo -l boost_threa
 
 SRCS=$(wildcard src/*.cpp)
 OBJS=$(patsubst src/%.cpp,obj/%.o, $(SRCS))
+TOPDIR := $(shell pwd)
+BINDIR := $(TOPDIR)/bin
+OBJDIR := $(TOPDIR)/obj
 
 all: app
 
 app:$(OBJS)
+	$(shell [ -d "$(BINDIR)" ] || mkdir -p $(BINDIR))
 	$(CC) $(OPTIONS) $(LIBRARIES) $(HINCLUDES) $(INCLUDES) $(XLINKERS) $(FRAMEWORKS) $(OBJS) -o bin/app 
 	bin/./app
 
 obj/%.o: src/%.cpp
+	$(shell [ -d "$(OBJDIR)" ] || mkdir -p $(OBJDIR))
 	$(CC) $(OPTIONS) $(LIBRARIES) $(HINCLUDES) -c $< -o $@
 
 clean:
-	rm -rf obj/*o
-	rm bin/app
+	rm -rf $(BINDIR)
+	rm -rf $(OBJDIR)

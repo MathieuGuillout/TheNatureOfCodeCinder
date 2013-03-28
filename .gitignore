@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+*.slo
+*.lo
+*.o
+*.so
+*.dylib
+*.lai
+*.la
+*.a
