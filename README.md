@@ -21,3 +21,4 @@ Example List
   - Normal distribution random numbers
   - Custom Distribution of random numbers
   - Perlin Noise Walker
+  - 2D Perlin Noise
