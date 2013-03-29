@@ -20,3 +20,4 @@ Example List
   - Non uniform distribution
   - Normal distribution random numbers
   - Custom Distribution of random numbers
+  - Perlin Noise Walker
