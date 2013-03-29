@@ -35,3 +35,6 @@ Example List
   - Vector substraction
   - Vector multiplication
   - Vector magnitude
+  - Vector normalization
+  - Vector Motion : Acceleration
+  - Interactivity with acceleration
