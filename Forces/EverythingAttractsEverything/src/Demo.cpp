@@ -8,7 +8,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-#define NB_BALLS 10
+#define NB_BALLS 50
 
 class Demo : public AppBasic 
 {
@@ -30,10 +30,11 @@ void Demo::prepareSettings(Settings *settings)
 
 void Demo::setup()
 {
+  Rand::randomize();
   gl::enableAlphaBlending();
   for (int i = 0; i < NB_BALLS; i++) {
     balls[i] = new Ball(
-      randFloat(0.1, 2), 
+      randFloat(0.1, 1.5), 
       Vec2f(randFloat(0, getWindowWidth()), randFloat(0, getWindowHeight()))
     );
   }
