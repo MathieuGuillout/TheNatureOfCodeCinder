@@ -1,1 +1,0 @@
-g++ -m32 -arch i386 -W -L /Users/mattam/Work/Clones/cinder/lib -L /Users/mattam/Work/Clones/cinder/lib/macosx -I /Users/mattam/Work/Clones/cinder/boost -I /Users/mattam/Work/Clones/cinder/include -I /System/Library/Frameworks -I include/ -c src/Ball.cpp -o obj/Ball.o
