@@ -12,7 +12,7 @@ Attractor::Attractor() {
 }
 
 void Attractor::draw() {
-  gl::color(0.2, 0.2, 0.2, 0.7);
+  gl::color(0.2, 0.2, 0.2, 1);
   gl::drawSolidCircle( position, mass * 2.0f );
   gl::color(0, 0, 0, 1);
   gl::drawStrokedCircle( position, mass * 2.0f );
