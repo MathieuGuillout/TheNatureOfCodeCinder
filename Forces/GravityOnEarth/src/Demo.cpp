@@ -37,9 +37,11 @@ void Demo::setup()
 
 void Demo::update() 
 {
-  Vec2f wind    = Vec2f(0.001f, 0.0f);
-  Vec2f gravity = Vec2f(0.0f, 0.01f);
   for (int i = 0; i < NB_BALLS; i++) {
+    Vec2f wind    = Vec2f(0.001f, 0.0f);
+
+    Vec2f gravity = Vec2f(0.0f, 0.01f * balls[i]->mass);
+
     balls[i]->applyForce(wind);
     balls[i]->applyForce(gravity);
     balls[i]->update();
