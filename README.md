@@ -42,3 +42,4 @@ Example List
 - Forces
   - Creating forces
   - Gravity on earth
+  - Friction
