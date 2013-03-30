@@ -23,9 +23,9 @@ void Ball::applyForce(Vec2f force)
 
 void Ball::draw() 
 {
-  gl::color(0.5, 0.5, 0.5, 1);
+  gl::color(0.5, 0.5, 0.5, 0.7);
   gl::drawSolidCircle( position, mass * 16.0f );
-  gl::color(0, 0, 0, 0.7);
+  gl::color(0, 0, 0, 1);
   gl::drawStrokedCircle( position, mass * 16.0f );
 }
 
