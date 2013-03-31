@@ -54,3 +54,4 @@ Example List
   - Simple harmonic motion
   - Oscillator objects
   - The wave
+  - The pendulum
