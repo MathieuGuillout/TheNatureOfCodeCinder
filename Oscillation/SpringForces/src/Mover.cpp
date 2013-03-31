@@ -22,15 +22,6 @@ void Mover::draw() {
   gl::drawSolidCircle(Vec2f(position), radius);
 }
 
-void Mover::checkEdges() {
-  if ((position.x > getWindowWidth()) || (position.x < 0)) {
-    speed.x *= -1;
-  } 
-  if ((position.y > getWindowHeight()) || (position.y < 0)) {
-    speed.y *= -1;
-  }
-}
-
 void Mover::applyForce(Vec2f force) 
 {
   Vec2f f = force / mass;
@@ -45,7 +36,6 @@ void Mover::update()
   
   position += speed;
  
-  checkEdges();
   acceleration = Vec2f(0, 0);
 }
 

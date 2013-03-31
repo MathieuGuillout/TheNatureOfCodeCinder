@@ -10,7 +10,6 @@ private:
   float topSpeed;
   float damping;
   float mass;
-  void checkEdges();
 public:
   Mover( ci::Vec2f _position );
   ci::Vec2f position;
