@@ -49,3 +49,4 @@ Example List
 - Oscillation
   - Angular motion
   - Forces with angular motion
+  - Pointing in the direction of motion
