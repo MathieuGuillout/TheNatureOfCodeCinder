@@ -46,3 +46,6 @@ Example List
   - Air and fluid resistance
   - Gravitational attraction
   - Everything attracs everything
+- Oscillation
+  - Angular motion
+
