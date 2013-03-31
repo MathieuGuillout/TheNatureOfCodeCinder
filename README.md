@@ -52,3 +52,4 @@ Example List
   - Pointing in the direction of motion
   - Polar to cartesian
   - Simple harmonic motion
+  - Oscillator objects
