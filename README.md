@@ -48,4 +48,4 @@ Example List
   - Everything attracs everything
 - Oscillation
   - Angular motion
-
+  - Forces with angular motion
