@@ -55,3 +55,4 @@ Example List
   - Oscillator objects
   - The wave
   - The pendulum
+  - Spring forces
