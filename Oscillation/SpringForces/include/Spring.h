@@ -3,15 +3,14 @@
 
 #include "cinder/app/AppBasic.h"
 #include "Mover.h"
-using namespace ci;
 
 class Spring {
 private:
-  Vec2f anchor;
+  ci::Vec2f anchor;
   float len;
   float k;
 public:
-  Spring( Vec2f _anchor, float _len );
+  Spring( ci::Vec2f _anchor, float _len );
   void draw();
   void connect( Mover * mover );
   void drawLine( Mover * mover );
