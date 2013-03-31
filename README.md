@@ -53,3 +53,4 @@ Example List
   - Polar to cartesian
   - Simple harmonic motion
   - Oscillator objects
+  - The wave
