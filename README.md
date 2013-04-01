@@ -65,3 +65,4 @@ Example List
   - Polymorphism basics
   - Particle systems with forces
   - Particle systems with repellers
+  - Image texture and additive blending
