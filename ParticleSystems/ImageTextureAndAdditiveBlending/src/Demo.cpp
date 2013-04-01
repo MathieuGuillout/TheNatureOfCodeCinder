@@ -1,10 +1,11 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/Rand.h"
 #include "cinder/gl/gl.h"
+#include "cinder/ImageIo.h"
+#include "cinder/gl/Texture.h"
 #include <vector>
 
 #include "ParticleSystem.h"
-#include "Repeller.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -14,7 +15,6 @@ using namespace std;
 class Demo : public AppBasic {
 private:
   ParticleSystem * particleSystem;
-  Repeller * repeller;
 public:
   void setup();
   void prepareSettings( Settings *settings );
@@ -28,24 +28,26 @@ void Demo::prepareSettings(Settings *settings) {
 }
 
 void Demo::setup() {
-  gl::enableAlphaBlending();
-  particleSystem = new ParticleSystem(getWindowCenter());
-  repeller = new Repeller(getWindowCenter() + Vec2f(0, 50));
+  gl::Texture myTexture = loadImage("resources/texture.png");
+  particleSystem = new ParticleSystem(getWindowCenter(), myTexture);
 }
 
 
 void Demo::update() {
-  Vec2f gravity = Vec2f(0, 0.5);
+  Vec2f gravity = Vec2f(0, 0.01);
   particleSystem->applyForce(gravity);
-  particleSystem->applyRepeller(repeller);
+
+  float dx = lmap((float)getMousePos().x, 0.0f, (float)getWindowWidth(), -0.2f, 0.2f);
+  Vec2f wind = Vec2f(dx, 0);
+  particleSystem->applyForce(wind);
+
   particleSystem->addParticle();
   particleSystem->update();
 }
 
 void Demo::draw() {
-  gl::clear( Color(1, 1, 1) );
+  gl::clear( Color(0, 0, 0) );
   particleSystem->draw();
-  repeller->draw();
 }
 
 

@@ -9,12 +9,14 @@ using namespace ci;
 using namespace ci::app;
 using namespace ci::gl;
 
-Particle::Particle(Vec2f l) {
+Particle::Particle(Vec2f l, gl::Texture text) {
   location = l;
   acceleration = Vec2f(0, 0);
-  velocity = Vec2f(randFloat(-1.0f, 1.0f), randFloat(-2.0f, 0.0f));
-  
-  mass = 10;
+  float vx = randGaussian() * 0.3;
+  float vy = randGaussian() * 0.3 - 1.0;
+  velocity = Vec2f(vx, vy);
+  myTexture = text; 
+  mass = 1;
   lifespan = LIFETIME;
 }
 
@@ -33,8 +35,9 @@ void Particle::applyForce(Vec2f force) {
 }
 
 void Particle::draw() { 
-  color(0, 0, 0, lifespan / LIFETIME);
-  drawSolidCircle(location, 8);
+  color(1, 1, 1, lifespan / LIFETIME);
+  gl::enableAdditiveBlending();
+  gl::draw(myTexture, Rectf(location - Vec2f(20, 20), location + Vec2f(20, 20)));
 }
 
 bool Particle::isDead() {

@@ -2,15 +2,17 @@
 #define PARTICLE_H
 
 #include "cinder/app/AppBasic.h"
-#define LIFETIME 255
+#include "cinder/gl/Texture.h"
+#define LIFETIME 512
 
 class Particle {
 public:
-  Particle(ci::Vec2f l);
+  Particle(ci::Vec2f l, ci::gl::Texture text);
 
   ci::Vec2f location;
   ci::Vec2f velocity;
   ci::Vec2f acceleration;
+  ci::gl::Texture myTexture;
   float mass;
   float lifespan;
 
