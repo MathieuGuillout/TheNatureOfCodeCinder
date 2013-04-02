@@ -3,20 +3,19 @@
 
 using namespace ci;
 
-Boundary::Boundary(b2World * _world, Vec2f _position, Vec2f _size) {
+Boundary::Boundary(b2World * _world, Rectf _rect) {
   world = _world;
-  size = _size;
-  position = _position;
+  rect = _rect;
   
   b2BodyDef bd;
   bd.type = b2_staticBody;
  
-  b2Vec2 p = Convert::toPhysics(_position);
+  b2Vec2 p = Convert::toPhysics(rect.getCenter());
   bd.position.Set(p.x, p.y);
   body = world->CreateBody(&bd);
 
   b2PolygonShape ps;
-  ps.SetAsBox(Convert::toPhysics(size.x / 2), Convert::toPhysics(size.y / 2));
+  ps.SetAsBox(Convert::toPhysics(rect.getWidth() / 2), Convert::toPhysics(rect.getHeight() / 2));
 
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &ps;
@@ -24,8 +23,6 @@ Boundary::Boundary(b2World * _world, Vec2f _position, Vec2f _size) {
 }
 
 void Boundary::draw() {
-  position = Convert::toScreen(body->GetPosition());
-  
   gl::color( Color(1, 1, 1) );
-  gl::drawSolidRect(Rectf(position, position + size ));
+  gl::drawSolidRect(rect);
 }

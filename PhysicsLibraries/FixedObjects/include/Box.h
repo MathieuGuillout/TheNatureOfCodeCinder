@@ -6,14 +6,13 @@
 
 class Box {
 private:
-  ci::Vec2f position;
-  ci::Vec2f size;
+  ci::Rectf rect;
   float angle;
   b2Body * body;
   b2World * world;
 
 public:
-  Box(b2World * world, ci::Vec2f _position);
+  Box(b2World * world, ci::Rectf rect);
   void draw();
   void update();
   void killBody();

@@ -6,12 +6,11 @@
 
 class Boundary {
 private:
-  ci::Vec2f position;
-  ci::Vec2f size;
+  ci::Rectf rect;
   b2Body * body;
   b2World * world;
 public:
-  Boundary(b2World * world, ci::Vec2f _position, ci::Vec2f _size); 
+  Boundary(b2World * world, ci::Rectf rect); 
   void draw();
 };
 

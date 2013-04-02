@@ -21,7 +21,7 @@ b2World world(gravity);
 class Demo : public AppBasic {
 private:
   list<Box> boxes;
-  Boundary * boundary;
+  list<Boundary> boundaries;
 public:
   void setup();
   void prepareSettings( Settings *settings );
@@ -31,16 +31,18 @@ public:
 };
 
 void Demo::prepareSettings(Settings *settings) {
-  settings->setWindowSize( 400, 300 );
+  settings->setWindowSize( 640, 480 );
   settings->setFrameRate( 60.0f );
 }
 
 void Demo::setup() {
-  boundary = new Boundary(&world, getWindowCenter(), Vec2f(getWindowWidth() /2 , getWindowHeight() / 2));
+  boundaries.push_back(Boundary(&world, Rectf(Vec2f(100, 100), Vec2f(200, 110))));
+  boundaries.push_back(Boundary(&world, Rectf(Vec2f(150, 250), Vec2f(450, 260))));
+  boundaries.push_back(Boundary(&world, Rectf(Vec2f(400, 400), Vec2f(600, 410))));
 }
 
 void Demo::mouseDown(MouseEvent event) {
-  Box box = Box(&world, getMousePos());
+  Box box = Box(&world, Rectf(getMousePos(), getMousePos() + Vec2f(16, 16)));
   boxes.push_back(box);
 }
 
@@ -56,7 +58,9 @@ void Demo::draw() {
   for (list<Box>::iterator b = boxes.begin(); b != boxes.end(); ++b) {
     b->draw();
   }
-  boundary->draw();
+  for (list<Boundary>::iterator b = boundaries.begin(); b != boundaries.end(); ++b) {
+    b->draw();
+  }
 }
 
 
