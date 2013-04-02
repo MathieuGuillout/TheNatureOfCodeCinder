@@ -5,7 +5,7 @@ FRAMEWORKS=-framework Cocoa -framework IOKit -framework Accelerate -framework Au
 LIBRARIES=-L ${CINDER_PATH}/lib -L ${CINDER_PATH}/lib/macosx
 XLINKERS=-XLinker ${CINDER_PATH}/lib/libcinder_d.a
 HINCLUDES=-I ${CINDER_PATH}/boost -I $(CINDER_PATH)/include -I /System/Library/Frameworks -I include/
-INCLUDES=-l cinder -l cinder_d -l z -l png14 -l pixman-1 -l cairo -l boost_thread -l boost_system -l boost_filesystem -l boost_date_time
+INCLUDES=-l cinder -l cinder_d -l z -l png14 -l pixman-1 -l cairo -l boost_thread -l boost_system -l boost_filesystem -l boost_date_time -l box2d
 
 SRCS=$(wildcard src/*.cpp)
 OBJS=$(patsubst src/%.cpp,obj/%.o, $(SRCS))
