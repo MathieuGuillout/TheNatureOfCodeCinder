@@ -68,3 +68,4 @@ Example List
   - Image texture and additive blending
 - Physics Libraries
   - Box2D
+  - Fixed objects
