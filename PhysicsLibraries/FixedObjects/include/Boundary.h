@@ -11,7 +11,7 @@ private:
   b2Body * body;
   b2World * world;
 public:
-  Boundary(b2World * _world, ci::Vec2f _position, ci::Vec2f _size); 
+  Boundary(b2World * world, ci::Vec2f _position, ci::Vec2f _size); 
   void draw();
 };
 

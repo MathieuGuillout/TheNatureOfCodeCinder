@@ -21,7 +21,7 @@ b2World world(gravity);
 class Demo : public AppBasic {
 private:
   list<Box> boxes;
-  Boundary b1;
+  Boundary * boundary;
 public:
   void setup();
   void prepareSettings( Settings *settings );
@@ -36,7 +36,7 @@ void Demo::prepareSettings(Settings *settings) {
 }
 
 void Demo::setup() {
-  b1 = Boundary(&world, getWindowCenter(), Vec2f(getWindowWidth() /2 , getWindowHeight() / 2));
+  boundary = new Boundary(&world, getWindowCenter(), Vec2f(getWindowWidth() /2 , getWindowHeight() / 2));
 }
 
 void Demo::mouseDown(MouseEvent event) {
@@ -56,7 +56,7 @@ void Demo::draw() {
   for (list<Box>::iterator b = boxes.begin(); b != boxes.end(); ++b) {
     b->draw();
   }
-  b1>draw();
+  boundary->draw();
 }
 
 
