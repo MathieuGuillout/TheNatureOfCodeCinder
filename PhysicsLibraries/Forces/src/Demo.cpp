@@ -13,7 +13,7 @@ using namespace std;
 
 #define NB_BALLS 100
 
-b2Vec2 gravity(0.0f, 0.0f);
+b2Vec2 gravity(0.0f, -10.0f);
 b2World world(gravity);
 
 class Demo : public AppBasic {
