@@ -15,12 +15,13 @@ Windmill::Windmill(b2World * _world ,ci::Vec2f _pos) {
   jointDef.bodyA = box1->body;
   jointDef.bodyB = box2->body;
   jointDef.localAnchorA.Set(0, -1);
+  jointDef.referenceAngle = 0;
   jointDef.collideConnected = false;
   
-  jointDef.motorSpeed = M_PI * 30;
+  jointDef.motorSpeed = M_PI * 2;
   jointDef.enableMotor = true;
   jointDef.enableLimit = false;
-  jointDef.maxMotorTorque = 10000;
+  jointDef.maxMotorTorque = 10;
 
 
   joint = (b2RevoluteJoint*)world->CreateJoint(&jointDef);
