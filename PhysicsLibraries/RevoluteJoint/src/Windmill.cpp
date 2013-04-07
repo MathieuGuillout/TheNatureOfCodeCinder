@@ -9,7 +9,7 @@ Windmill::Windmill(b2World * _world ,ci::Vec2f _pos) {
  
   world = _world;
   box1 = new Box(world, Rectf(_pos, _pos + Vec2f(20, 100)), false);
-  box2 = new Box(world, Rectf(_pos + Vec2f(-50, 100), _pos + Vec2f(70, 105)), true);
+  box2 = new Box(world, Rectf(_pos + Vec2f(-50, 0), _pos + Vec2f(70, 5)), true);
 
   b2RevoluteJointDef jointDef;
   jointDef.bodyA = box1->body;
@@ -38,6 +38,4 @@ void Windmill::update() {
 void Windmill::draw() {
   box1->draw();
   box2->draw();
-  gl::color( Color(0, 0, 0) );
-  gl::drawLine(Convert::toScreen(box1->body->GetPosition()), Convert::toScreen(box2->body->GetPosition()));
 }
