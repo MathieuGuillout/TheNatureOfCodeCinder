@@ -75,4 +75,4 @@ Example List
   - Mouse Joint
   - Forces
   - Collision listening
-  - Simple spring with toxiclibs ( use C++ port https://github.com/hlp/toxiclibs-- )
+  - Simple spring with verlet integration  
