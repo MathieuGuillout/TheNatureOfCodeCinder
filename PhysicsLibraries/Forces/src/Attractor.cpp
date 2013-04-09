@@ -10,7 +10,7 @@ Attractor::Attractor(b2World * _world) {
   world = _world;
   position = Vec2f(getWindowWidth() / 2, getWindowHeight() / 2);
   mass = 40.0f;
-  G = 0.2;
+  G = 0.02;
 
   b2BodyDef bd;
   bd.type = b2_staticBody;

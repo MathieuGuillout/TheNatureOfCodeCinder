@@ -38,11 +38,10 @@ void Demo::setup() {
   Rand::randomize();
   gl::enableAlphaBlending();
   for (int i = 0; i < NB_BALLS; i++) {
-    balls.push_back(
-      Ball(&world, 
-           randFloat(1, 20), 
-           Vec2f(randFloat(getWindowWidth()), randFloat(getWindowHeight())))
-    );
+    Ball ball = Ball(&world, 
+                     randFloat(1, 20), 
+                     Vec2f(randFloat(getWindowWidth()), randFloat(getWindowHeight())));
+    balls.push_back(ball);
   }
   attractor = new Attractor(&world);
 }
@@ -50,8 +49,9 @@ void Demo::setup() {
 void Demo::update() {
   // Friction coefficient
   float c = 0.05;
-  for (list<Ball>::iterator ball = balls.begin(); ball != balls.end(); ball++) {
-    ball->applyForce(attractor->attract((Ball *)&ball));
+  for (list<Ball>::iterator ball = balls.begin(); ball != balls.end(); ++ball) {
+    b2Vec2 f = attractor->attract(&*ball);
+    ball->applyForce(f);
   }
   world.Step(0.01f, 6, 7); 
 }

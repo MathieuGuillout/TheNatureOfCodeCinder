@@ -11,6 +11,7 @@ class Attractor{
 private:
   float G;
   b2World * world;
+
 public:
   float mass;
   Vec2f position;
