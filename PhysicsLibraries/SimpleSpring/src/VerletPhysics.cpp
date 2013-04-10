@@ -42,7 +42,11 @@ void VerletPhysics::updateParticles() {
 }
 
 void VerletPhysics::updateSprings() {
-
+  for (int i = numIterations; i > 0; i--) {
+    for (std::list<VerletSpring *>::iterator s = springs.begin(); s != springs.end(); s++) {
+      ((VerletSpring *)*s)->update(i == 1);
+    }
+  }
 }
 
 void VerletPhysics::applyConstraints() {

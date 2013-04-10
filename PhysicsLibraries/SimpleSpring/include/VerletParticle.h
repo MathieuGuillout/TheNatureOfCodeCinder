@@ -8,17 +8,18 @@ class Behavior;
 
 class VerletParticle {
 private:
-  bool isLocked;
   ci::Vec2f prev, temp;
   ci::Vec2f force;
-  float weight;
 
 public:
   ci::Vec2f position;
+  float weight, invWeight;
+  bool isLocked;
   std::list<Behavior *> behaviors;
 
   VerletParticle(ci::Vec2f _pos, float _weight = 1);
   void lock(); 
+  void setWeight(float weight);
   void unlock();   
   void update();
   void applyBehaviors();

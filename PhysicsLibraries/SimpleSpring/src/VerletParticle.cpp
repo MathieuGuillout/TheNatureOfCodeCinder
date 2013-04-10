@@ -7,9 +7,14 @@ VerletParticle::VerletParticle(ci::Vec2f _pos, float _weight) {
 
   prev = _pos;
   temp = _pos;
+  setWeight(_weight);
   weight = _weight;
 }
 
+void VerletParticle::setWeight(float _weight) {
+  weight = _weight;
+  invWeight = 1.0f / _weight;
+}
 
 void VerletParticle::lock()   { isLocked = true; }
 void VerletParticle::unlock() { isLocked = false; }

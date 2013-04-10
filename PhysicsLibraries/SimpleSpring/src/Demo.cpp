@@ -36,7 +36,7 @@ void Demo::mouseDown(MouseEvent e) { mousePressed = true; }
 
 void Demo::prepareSettings(Settings *settings) 
 {
-  settings->setWindowSize( 200, 200 );
+  settings->setWindowSize( 400, 400 );
   settings->setFrameRate( 60.0f );
 }
 
@@ -48,11 +48,11 @@ void Demo::setup()
   physics->addBehavior(new GravityBehavior(Vec2f(0, 0.5)));
   physics->setWorldBounds(Rectf(0, 0, getWindowWidth(), getWindowHeight()));
  
-  p1 = new Particle(Vec2f(100, 10));
-  p2 = new Particle(Vec2f(100, 180));
+  p1 = new Particle(Vec2f(190, 120));
+  p2 = new Particle(Vec2f(190, 300));
   p1->lock();
 
-  VerletSpring * spring = new VerletSpring(p1, p2, 80, 0.01);
+  VerletSpring * spring = new VerletSpring(p1, p2, 180, 0.01);
   physics->addParticle(p1);
   physics->addParticle(p2);
   physics->addSpring(spring);

@@ -8,17 +8,21 @@
 
 class VerletSpring {
 private:
-  VerletParticle * p1;
-  VerletParticle * p2;
-  float len;
+  const static float EPS = 1e-6f;
+  VerletParticle * a;
+  VerletParticle * b;
+  float restLength, restLengthSquared;
   float strength;
+  bool isALocked, isBLocked;
 public:
-  VerletSpring(VerletParticle * _p1, VerletParticle * _p2, float _len, float _strength) {
-    p1 = _p1;
-    p2 = _p2;
-    len = _len;
-    strength = _strength;
-  }
+  VerletSpring(VerletParticle * _a, VerletParticle * _b, float _len, float _strength);
+  float getRestLength();
+  float getStrength();
+  void lockA(bool s);
+  void lockB(bool s);
+  void setRestLength(float len);
+  void setStrength(float strength);
+  void update(bool applyConstraints);
 };
 
 #endif
