@@ -10,7 +10,7 @@ Attractor::Attractor(b2World * _world) {
   world = _world;
   position = Vec2f(getWindowWidth() / 2, getWindowHeight() / 2);
   mass = 40.0f;
-  G = 0.02;
+  G = 3;
 
   b2BodyDef bd;
   bd.type = b2_staticBody;
@@ -36,7 +36,7 @@ void Attractor::draw() {
 b2Vec2 Attractor::attract(Ball * ball) {
   b2Vec2 force = body->GetPosition();
   force -= ball->body->GetPosition();
-  float distance = constrain(force.Length(), 5.0f, 25.0f);
+  float distance = constrain(force.Length(), 5.0f, 250.0f);
   force.Normalize();
   float strength = ( G * mass * mass ) / ( distance * distance );
   force *= strength;
