@@ -6,6 +6,8 @@ VerletSpring::VerletSpring(VerletParticle * _a, VerletParticle * _b, float _len,
   b = _b;
   restLength = _len;
   strength = _strength;
+  isBLocked = false;
+  isALocked = false;
 }
 
 float VerletSpring::getRestLength() {
@@ -42,7 +44,8 @@ void VerletSpring::update(bool applyConstraints){
   if (!a->isLocked && !isALocked) {
     a->position += delta * (normDistStrength * a->invWeight);  
   }
-              
+             
+
   if (!b->isLocked && !isBLocked) {
     b->position += delta * (-normDistStrength * b->invWeight);  
   }
