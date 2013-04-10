@@ -76,3 +76,4 @@ Example List
   - Forces
   - Collision listening
   - Simple spring with verlet integration  
+  - Soft swinging pendulum
