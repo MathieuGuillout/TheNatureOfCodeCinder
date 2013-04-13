@@ -79,3 +79,5 @@ Example List
   - Soft swinging pendulum
   - Cluster
   - Attraction / Repulsion
+- Autonomous Agents
+  - Vehicles and steering
