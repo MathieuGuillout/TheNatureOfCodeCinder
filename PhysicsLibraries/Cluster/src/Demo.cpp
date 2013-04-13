@@ -38,7 +38,7 @@ void Demo::setup()
   mousePressed = false;
 
   physics = new VerletPhysics();
-  cluster = new Cluster(physics, 33, 200, getWindowCenter());
+  cluster = new Cluster(physics, 8, 200, getWindowCenter());
 }
 
 
