@@ -78,3 +78,4 @@ Example List
   - Simple spring with verlet integration  
   - Soft swinging pendulum
   - Cluster
+  - Attraction / Repulsion
