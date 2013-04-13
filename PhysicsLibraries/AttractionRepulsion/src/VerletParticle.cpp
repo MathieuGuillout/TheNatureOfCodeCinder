@@ -11,6 +11,10 @@ VerletParticle::VerletParticle(ci::Vec2f _pos, float _weight) {
   weight = _weight;
 }
 
+void VerletParticle::setPosition(ci::Vec2f _pos) {
+  position = _pos;
+}
+
 void VerletParticle::setWeight(float _weight) {
   weight = _weight;
   invWeight = 1.0f / _weight;

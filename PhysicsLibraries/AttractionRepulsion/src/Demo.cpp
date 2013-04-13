@@ -25,6 +25,8 @@ public:
   void setup();
   void draw();
   void update();
+  void mouseUp(MouseEvent e);
+  void mouseDown(MouseEvent e);
 };
 
 
@@ -54,6 +56,13 @@ void Demo::setup() {
 
 void Demo::update()  {
   physics->update();
+
+  if (mousePressed) {
+    attractor->lock();
+    attractor->setPosition(getMousePos());
+  } else {
+    attractor->unlock();
+  }
 }
 
 
@@ -67,5 +76,12 @@ void Demo::draw() {
   attractor->draw();
 }
 
+void Demo::mouseDown(MouseEvent e) {
+  mousePressed = true;
+}
+
+void Demo::mouseUp(MouseEvent e) {
+  mousePressed = false;
+}
 
 CINDER_APP_BASIC( Demo, RendererGl )

@@ -20,6 +20,7 @@ public:
   VerletParticle(ci::Vec2f _pos, float _weight = 1);
   void lock(); 
   void setWeight(float weight);
+  void setPosition(ci::Vec2f _pos);
   void unlock();   
   void update();
   void applyBehaviors();
