@@ -81,3 +81,5 @@ Example List
   - Attraction / Repulsion
 - Autonomous Agents
   - Vehicles and steering
+  - Arrive steering behaviour
+  - Flow fields

@@ -1,0 +1,43 @@
+#ifndef FLOWFIELD_H
+#define FLOWFIELD_H
+
+#include "cinder/app/AppBasic.h"
+#include "cinder/Perlin.h"
+#include <vector>
+
+using namespace std;
+using namespace ci;
+
+class FlowField {
+private: 
+  vector< vector<Vec2f> > field;  
+  int cols, rows;
+  int resolution;
+public:
+  FlowField(Vec2f size) {
+    resolution = 10;
+    cols = size.x / resolution;
+    rows = size.y / resolution;
+
+    Perlin * perlin = new Perlin();
+    float xoff = 0;
+    for (int i = 0; i < cols; i++) {
+      float yoff = 0;
+      vector<Vec2f> col;
+      for (int j = 0; j < rows; j++) {
+        float theta = lmap(perlin.noise(xoff, yoff), 0, 1, 0, M_PI * 2.0f);
+        col.push_back(Vec2f(cos(theta), sin(theta)));
+      }
+      field.push_back(col);
+    }
+  }
+
+  Vec2f lookup(Vec2f lookup) {
+    int column = (int)constrain((int)(lookup.x / resolution), 0, cols - 1);
+    int row = (int)constrain((int)(lookup.y / resolution), 0, rows - 1);
+    //return Vec2f(0, 0);
+    return field.at(column).at(row);
+  }
+};
+
+#endif
