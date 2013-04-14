@@ -24,7 +24,6 @@ public:
 
     shape = Shape2d();
     
-    shape.moveTo( start + Vec2f(0, -radius) );
     shape.moveTo( start + Vec2f(0,  radius) );
     shape.lineTo( end   + Vec2f(0,  radius) );
     shape.lineTo( end   + Vec2f(0, -radius) );
