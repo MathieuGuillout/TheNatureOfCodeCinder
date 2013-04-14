@@ -88,3 +88,4 @@ Example List
   - Complex systems
   - Seek and separate
   - Flocking
+  - Optimized flocking
