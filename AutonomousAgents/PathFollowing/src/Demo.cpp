@@ -3,6 +3,7 @@
 #include "cinder/Rand.h"
 
 #include "Vehicle.h"
+#include "Path.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -11,6 +12,8 @@ using namespace std;
 class Demo : public AppBasic {
 private:
   bool mousePressed;
+  Path * path;
+  Vehicle * vehicle;
 public:
   void prepareSettings( Settings *settings );
   void setup();
@@ -30,14 +33,20 @@ void Demo::setup() {
   Rand::randomize();
   gl::enableAlphaBlending();
 
+  path = new Path();
+  vehicle = new Vehicle(Vec2f(40, 40));
   mousePressed = false;
 }
 
 void Demo::update() {
+  vehicle->follow(path);
+  vehicle->update();
 }
 
 void Demo::draw() {
   gl::clear(Color(1, 1, 1));
+  path->draw();
+  vehicle->draw();
 }
 
 

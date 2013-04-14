@@ -83,3 +83,4 @@ Example List
   - Vehicles and steering
   - Arrive steering behaviour
   - Flow fields
+  - Path following
