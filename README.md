@@ -89,3 +89,5 @@ Example List
   - Seek and separate
   - Flocking
   - Optimized flocking
+- Cellular automata
+  - Elementary CA
