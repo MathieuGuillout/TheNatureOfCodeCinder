@@ -91,3 +91,4 @@ Example List
   - Optimized flocking
 - Cellular automata
   - Elementary CA
+  - Game of life
