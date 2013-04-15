@@ -16,13 +16,8 @@ public:
   void setup();
   void draw();
   void update();
-  void mouseDown(MouseEvent e);
 };
 
-void Demo::mouseDown(MouseEvent e) {
-  //goa->generate();
-  goa->draw();
-}
 
 void Demo::prepareSettings(Settings *settings) {
   settings->setWindowSize( 840, 480 );
@@ -32,13 +27,15 @@ void Demo::prepareSettings(Settings *settings) {
 void Demo::setup() {
   gl::clear( Color(1, 1, 1) );
   gl::enableAlphaBlending();
-  goa = new GameOfLife();
+  goa = new GameOfLife(getWindowSize(), 1);
 }
 
 void Demo::update() {
+  goa->generate();
 }
 
 void Demo::draw() {
+  goa->draw();
 }
 
 
