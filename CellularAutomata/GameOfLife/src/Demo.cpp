@@ -21,7 +21,6 @@ public:
 
 
 void Demo::mouseDown(MouseEvent e) {
-  goa->generate();
 }
 
 void Demo::prepareSettings(Settings *settings) {
@@ -30,14 +29,14 @@ void Demo::prepareSettings(Settings *settings) {
 }
 
 void Demo::setup() {
-  randomize();
 
   gl::clear( Color(1, 1, 1) );
   gl::enableAlphaBlending();
-  goa = new GameOfLife(getWindowSize(), 10);
+  goa = new GameOfLife(getWindowSize(), 3);
 }
 
 void Demo::update() {
+  goa->generate();
 }
 
 void Demo::draw() {
