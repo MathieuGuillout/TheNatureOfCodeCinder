@@ -7,7 +7,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-GameOfLife::GameOfLife(Vec2f size, int res) {
+GameOfLife::GameOfLife(Vec2f size, int _res) {
 
   resolution = _res;
   columns = (int)(size.y / resolution);
