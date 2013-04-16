@@ -92,3 +92,10 @@ Example List
 - Cellular automata
   - Elementary CA
   - Game of life
+- Fractals
+  - Recursive circle
+  - Recursion twice
+  - Recursion four times
+  - Cantor set
+  - Kock curve
+  - Recursive tree
