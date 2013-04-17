@@ -99,4 +99,5 @@ Example List
   - Cantor set
   - Kock curve
   - Recursive tree
+  - Scholastic tree
 
