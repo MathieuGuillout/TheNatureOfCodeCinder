@@ -7,10 +7,11 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Line {
+class Branch {
 public:
-  Vec2f start, end;
-  Line(Vec2f s, Vec2f e) {
+  Vec2f start;
+  Vec2f end;
+  Branch(Vec2f s, Vec2f e) {
     start = s;
     end = e;
   }
@@ -18,28 +19,52 @@ public:
 
 class Tree {
 public:
-  vector< vector<Line *> > branches;
-  Tree(Vec2f root, float len, float theta, int generations);
-  void draw();
-};
+  vector< vector<Branch *> > branches;
+  float len;
+  float theta;
+  Tree(Vec2f root, float _len, float _theta, int generations) {
+    len = _len;
+    theta = _theta;
+    vector<Branch *> first_branches;
+    first_branches.push_back(new Branch(Vec2f(getWindowWidth() / 2, getWindowHeight()), 
+                                        Vec2f(getWindowWidth() / 2, getWindowHeight() - len)));
+    branches.push_back(first_branches);
 
-Tree::Tree(Vec2f root, float len, float theta, int generations) {
-  vector<Line *> first_branches;
-  first_branches.push_back(new Line(Vec2f(0, 0), Vec2f(0, len)));
-  this->branches.push_back(first_branches);
-}
+    for(int i = 0; i < generations; i++) {
+      generate();
+    }
+  }
 
-void Tree::draw() {
-    console() << this->branches.size() << endl;
-    /*
+  void generate() {
+    len *= 0.7;
+    vector<Branch *> newBranches;
+    vector<Branch *> lastGroup = branches.at(branches.size() - 1);
+    for(int i = 0; i < (int)(lastGroup.size()); i++) {
+      Branch * b = lastGroup.at(i);
+      Vec2f b1 = (b->end - b->start).safeNormalized() * len;
+      b1.rotate(theta);
+      
+      Vec2f b2 = (b->end - b->start).safeNormalized() * len;
+      b2.rotate(-theta);
+     
+      newBranches.push_back(new Branch(b->end, b->end + b1)); 
+      newBranches.push_back(new Branch(b->end, b->end + b2)); 
+
+    }
+    branches.push_back(newBranches);
+  }
+
+  void draw() {
+    gl::color(Color(0, 0, 0));
     for(int i = 0; i < (int)(branches.size()); i++) {
-      vector<Line *> brs = branches.at(i);
+      vector<Branch *> brs = branches.at(i);
       for(int j = 0; j < (int)brs.size(); j++) {
-        //gl::drawLine(brs.at(j)->start, brs.at(j)->end);
+        gl::drawLine(brs.at(j)->start, brs.at(j)->end);
       }
     }
-    */
-}
+  }
+
+};
 
 class Demo : public AppBasic {
 public:
@@ -65,8 +90,7 @@ void Demo::setup() {
   gl::clear( Color(1, 1, 1) );
   gl::enableAlphaBlending();
 
-  Tree * tree = new Tree(Vec2f(getWindowWidth() / 2, 0), 30, M_PI / 3, 10);
-  console() << tree->branches.size() << endl;
+  tree = new Tree(Vec2f(getWindowWidth() / 2, 0), 90, M_PI / 6, 10);
 }
 
 void Demo::update() {
@@ -74,8 +98,7 @@ void Demo::update() {
 
 void Demo::draw() {
   gl::color( Color(1, 1, 1) );
-  //tree->draw();
-  console() << tree->branches.size() << endl;
+  tree->draw();
 }
 
 CINDER_APP_BASIC( Demo, RendererGl )
