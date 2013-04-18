@@ -44,6 +44,7 @@ public:
   float len;
   float theta;
   Vec2f startPoint;
+  vector<Line *> lines;
   Turtle(string _sentence, float _len, float _theta, Vec2f start) {
     sentence = _sentence;
     len = _len;
@@ -53,22 +54,30 @@ public:
 
   void draw() {
 
+    gl::color(0.2, 0.2, 0.2, 0.5);
+    for(int i = 0; i < (int)lines.size(); i++) {
+      gl::drawLine(lines.at(i)->start, lines.at(i)->end);
+    }
+
+  }
+
+  void generateLines() {
     Vec2f lastPoint = startPoint;
     float lastAngle = 0;
-    vector<Line *> lines;
+    vector<Line *> newlines;
     stack<State *> states;
 
 
     for(int i = 0; i < (int)sentence.length(); i++) {
       char c = sentence.at(i);
       Vec2f add = Vec2f(0, -len);
-      add.rotate(lastAngle * 180 / M_PI);
+      add.rotate(lastAngle);
       Vec2f endPoint;
 
       switch (c) {
         case 'F': 
           endPoint = lastPoint + add;
-          lines.push_back(new Line(lastPoint, endPoint));
+          newlines.push_back(new Line(lastPoint, endPoint));
           lastPoint = endPoint;
           break;
         case 'G':
@@ -92,14 +101,11 @@ public:
       }
     }
 
-    gl::color( Color(0, 0, 0) );
-    for(int i = 0; i < (int)lines.size(); i++) {
-      gl::drawLine(lines.at(i)->start, lines.at(i)->end);
-    }
-
+    lines = newlines;
   }
   void setToDo(string _sentence) {
     sentence = _sentence;
+    generateLines();
   }
   void changeLen(float _f) {
     len *= _f;
@@ -122,13 +128,20 @@ public:
     for(int i = 0; i < (int)sentence.length(); i++) {
       
       char c = sentence.at(i);
+      bool found = false;
       for (int j = 0; j < (int)rules.size(); j++) {
         Rule * rule = rules.at(j);
         if (rule->key == c) {
           next << rule->next;
+          found = true;
           break;
         }
       }
+
+      if (!found) {
+        next << c;
+      }
+
     }
     sentence = next.str();
   }
@@ -149,13 +162,13 @@ public:
 
 
 void Demo::mouseDown(MouseEvent e) {
-  lsystem->generate();
-  turtle->setToDo(lsystem->sentence);
   turtle->changeLen(0.5f);
+  turtle->setToDo(lsystem->sentence);
+  lsystem->generate();
 }
 
 void Demo::prepareSettings(Settings *settings) {
-  settings->setWindowSize( 600, 300 );
+  settings->setWindowSize( 500, 600 );
   settings->setFrameRate( 60.0f );
 }
 
@@ -166,12 +179,11 @@ void Demo::setup() {
 
   vector<Rule *> rules;
   rules.push_back(new Rule('F', string("FF+[+F-F-F]-[-F+F+F]")));
-
   lsystem = new LSystem(string("F"), rules);
   turtle = new Turtle(
     lsystem->sentence, 
-    getWindowWidth() / 4, 
-    M_PI / 7, 
+    getWindowHeight() / 2, 
+    M_PI/7, 
     Vec2f(getWindowWidth() / 2, getWindowHeight())
   );
 
