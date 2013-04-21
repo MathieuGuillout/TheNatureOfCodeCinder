@@ -105,3 +105,4 @@ Example List
   - Evolving Shakespeare
   - Smart Rockets
   - Smart Rockets With Obstacles
+  - Interactive Selection
