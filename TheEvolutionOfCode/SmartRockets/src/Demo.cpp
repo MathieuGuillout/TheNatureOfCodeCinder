@@ -31,14 +31,15 @@ void Demo::prepareSettings(Settings *settings) {
 
 void Demo::setup() {
 
+  Rand::randomize();
   gl::clear( Color(1, 1, 1) );
   gl::enableAlphaBlending();
 
   lifetime = 500;
   lifeCounter = 500;
 
-  population = new Population(50, lifetime, 0.01);
   target = new Target(Vec2f(100, 100), 30);
+  population = new Population(200, lifetime, 0.01, target->position);
 }
 
 void Demo::update() {
@@ -46,6 +47,8 @@ void Demo::update() {
     population->live();
     lifeCounter++;
   } else {
+    gl::clear( Color(1, 1, 1) );
+    lifeCounter = 0;
     population->fitness();
     population->selection();
     population->reproduction();
@@ -53,7 +56,6 @@ void Demo::update() {
 }
 
 void Demo::draw() {
-  gl::color( Color(1, 1, 1) );
   for(int i = 0; i < (int)population->elements.size(); i++) {
     population->elements.at(i)->draw();
   }

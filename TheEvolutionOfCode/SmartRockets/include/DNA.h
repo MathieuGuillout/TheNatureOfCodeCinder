@@ -6,12 +6,13 @@
 #include "cinder/Vector.h"
 
 class DNA {
-private:
-  std::vector<ci::Vec2f> genes;
 public:
-  float fitness;
+  std::vector<ci::Vec2f> genes;
+  float maxForce;
+
   DNA(int nbGenes, float maxForce);
-  void computeFitness();
+  DNA(std::vector<ci::Vec2f> genes, float maxForce);
+
   DNA * crossover(DNA * partner);
   void mutate(float mutationRate);
 };

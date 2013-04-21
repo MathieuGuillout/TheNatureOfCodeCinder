@@ -10,6 +10,6 @@ Target::Target(ci::Vec2f pos, float r) {
 }
 
 void Target::draw() {
-  gl::color(Color(0, 0, 0));
+  gl::color(Color(1, 0, 0));
   gl::drawSolidCircle(position, radius);
 }

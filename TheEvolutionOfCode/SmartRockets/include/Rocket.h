@@ -1,6 +1,7 @@
 #ifndef ROCKET_H
 #define ROCKET_H
 
+#include <vector>
 #include "cinder/cinder.h"
 #include "DNA.h"
 
@@ -10,14 +11,20 @@ private:
   ci::Vec2f velocity;
   ci::Vec2f acceleration;
 
-  DNA * dna;
-  float fitness;
   int geneCounter;
+  ci::Vec2f target;
 public:
-  Rocket(int nbVectors);
+  float fitness;
+  bool hitTarget;
+  DNA * dna;
+
+  Rocket(int nbVectors, ci::Vec2f target, DNA * dna);
   void applyForce(ci::Vec2f force);
   void update();
   void run();
+  void draw();
+  void computeFitness();
+  void checkTarget();
 };
 
 #endif
