@@ -21,6 +21,8 @@ public:
   void reproduction();
 
   void draw();
+  float getMaxFitness();
+  void rollover(ci::Vec2f position);
 };
 
 #endif

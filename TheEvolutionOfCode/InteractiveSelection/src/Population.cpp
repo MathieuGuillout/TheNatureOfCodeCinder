@@ -2,6 +2,7 @@
 #include "cinder/app/AppBasic.h"
 #include "Population.h"
 #include "DNA.h"
+#include "Face.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -10,7 +11,7 @@ using namespace std;
 Population::Population(float _mutationRate, int _nbElts) {
   mutationRate = _mutationRate;
   for (int i = 0; i < _nbElts; i++) {
-    elements.push_back(new Face());
+    elements.push_back(new Face(new DNA(), Vec2f(50 + i * 85, 60)));
   }
 }
 
@@ -42,7 +43,7 @@ void Population::reproduction() {
     DNA * child = partnerA->crossover(partnerB);
     child->mutate(mutationRate);
 
-    elements.at(i) = new Face(child);
+    elements.at(i) = new Face(child, Vec2f(50 + i * 85, 60));
   }
 
 }
@@ -58,5 +59,13 @@ float Population::getMaxFitness() {
 }
 
 void Population::draw() {
+  for (int i = 0; i < (int)elements.size(); i++) {
+    elements.at(i)->draw();
+  }
+}
 
+void Population::rollover(Vec2f pos) {
+  for (int i = 0; i < (int)elements.size(); i++) {
+    elements.at(i)->rollover(pos);
+  }
 }

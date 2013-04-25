@@ -25,7 +25,7 @@ public:
 
 
 void Demo::prepareSettings(Settings *settings) {
-  settings->setWindowSize( 500, 600 );
+  settings->setWindowSize( 900, 300 );
   settings->setFrameRate( 60.0f );
 }
 
@@ -36,7 +36,7 @@ void Demo::setup() {
   gl::enableAlphaBlending();
 
   population = new Population(0.05f, 10);
-  button = new Button(Rectf(15, 150, 160, 20), string("evolve new generation"));
+  button = new Button(Rectf(15, 150, 175, 170), string("evolve new generation"));
 
 }
 
@@ -48,7 +48,7 @@ void Demo::mouseDown(MouseEvent e) {
 }
 
 void Demo::update() {
-  //population->fitness();
+  population->rollover(getMousePos());
 }
 
 void Demo::draw() {
