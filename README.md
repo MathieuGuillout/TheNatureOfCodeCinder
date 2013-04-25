@@ -106,3 +106,4 @@ Example List
   - Smart Rockets
   - Smart Rockets With Obstacles
   - Interactive Selection
+  - Ecosystem Simulation
