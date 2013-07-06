@@ -26,13 +26,31 @@ public:
   void setup();
   void draw();
   void update();
-  void mouseDown(MouseEvent e);
+  void mouseDrag(MouseEvent e);
   void mouseUp(MouseEvent e);
+  void mouseDown(MouseEvent e);
+
+  Vec2i mMousePos;
 };
 
 // Mouse events
-void Demo::mouseUp(MouseEvent e)   { mousePressed = false; }
-void Demo::mouseDown(MouseEvent e) { mousePressed = true; }
+void Demo::mouseUp(MouseEvent e)
+{
+	mousePressed = false; 
+
+}
+
+void Demo::mouseDown(MouseEvent e)
+{
+	mousePressed = true;
+	mMousePos = e.getPos();
+}
+
+void Demo::mouseDrag(MouseEvent e)
+{
+	mMousePos = e.getPos();
+		
+}
 
 void Demo::prepareSettings(Settings *settings) 
 {
@@ -63,7 +81,7 @@ void Demo::update()
   physics->update();
   if (mousePressed) {
     p2->lock();
-    p2->position = getMousePos();
+	p2->position = mMousePos;
     p2->unlock();
   }
 }

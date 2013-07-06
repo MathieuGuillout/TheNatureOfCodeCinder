@@ -6,9 +6,11 @@
 
 #include "VerletParticle.h"
 
+const static float EPS = 1e-6f;
+
 class VerletSpring {
 private:
-  const static float EPS = 1e-6f;
+
   VerletParticle * a;
   VerletParticle * b;
   float restLength, restLengthSquared;

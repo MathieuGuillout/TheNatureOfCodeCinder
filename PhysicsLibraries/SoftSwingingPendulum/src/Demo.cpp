@@ -28,8 +28,12 @@ public:
   void setup();
   void draw();
   void update();
+  
+  void mouseDrag(MouseEvent e);
   void mouseDown(MouseEvent e);
   void mouseUp(MouseEvent e);
+
+  Vec2i mousePos;
 };
 
 
@@ -43,6 +47,8 @@ void Demo::setup()
 {
   mousePressed = false;
 
+  mousePos.set(0, 0);
+
   physics = new VerletPhysics();
   physics->addBehavior(new GravityBehavior(Vec2f(0, 0.1)));
   physics->setWorldBounds(Rectf(0, 0, getWindowWidth(), getWindowHeight()));
@@ -50,24 +56,25 @@ void Demo::setup()
   chain = new Chain(physics, 180, 20, 16, 0.2);
 }
 
-void Demo::mouseDown(MouseEvent e) {
-  if (!mousePressed) {
-    mousePressed = true;
-    chain->contains(getMousePos());
-  }
+void Demo::mouseDrag(MouseEvent e)
+{
+	mousePos.set(e.getPos());
+	chain->contains(mousePos);
+}
+
+void Demo::mouseDown(MouseEvent e)
+{
+	//chain->contains(e.getPos());
 }
 
 void Demo::mouseUp(MouseEvent e) {
-  if (mousePressed) {
-    mousePressed = false;
     chain->release();
-  }
 }
 
 void Demo::update() 
 {
   physics->update();
-  chain->updateTail(getMousePos());
+  chain->updateTail(mousePos);
 }
 
 
